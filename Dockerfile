@@ -14,4 +14,4 @@ RUN npm install
 COPY . .
 
 # Собираем приложение
-CMD ["npm", "run", "build"]
+CMD ["npm", "run", "preview"]
