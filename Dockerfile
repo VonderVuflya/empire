@@ -13,5 +13,8 @@ RUN npm install
 # Копируем исходный код приложения
 COPY . .
 
+ARG PORT
+EXPOSE ${PORT:-4321}
+
 # Собираем приложение
 CMD ["npm", "run", "preview"]
