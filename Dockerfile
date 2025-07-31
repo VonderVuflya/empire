@@ -8,6 +8,7 @@ RUN npm install
 
 FROM build-deps AS build
 COPY . .
+RUN npx astro telemetry disable
 RUN npm run build
 
 FROM nginx:alpine AS runtime
