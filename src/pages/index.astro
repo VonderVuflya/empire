@@ -1,4 +1,15 @@
 ---
-// Автоматически перенаправляем на первый эпизод
-return Astro.redirect('/episode/1');
+import Layout from '@/layouts/Layout.astro'
 ---
+
+<Layout>
+  <div class='my-6'>
+    <div class='relative overflow-hidden pt-[56.25%] rounded-2xl bg-black'>
+      <p>Перенаправление на <a href='/episode/1'>Эпизод 1</a>...</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  window.location.replace('/episode/1')
+</script>
