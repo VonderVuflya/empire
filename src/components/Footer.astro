@@ -1,0 +1,74 @@
+---
+import Typography from './ui/typography'
+
+import LogoInst from '../assets/logo-inst.svg'
+import LogoPragmat from '../assets/logo-pragmat.svg'
+import LogoRatata from '../assets/logo-ratata.svg'
+import LogoTG from '../assets/logo-tg.svg'
+import LogoVK from '../assets/logo-vk.svg'
+import LogoYT from '../assets/logo-yt.svg'
+import LogoZim from '../assets/logo-zim.png'
+---
+
+<div class='flex justify-between items-center'>
+  <div class='mt-4 mb-4'>
+    <Typography.P className='flex flex-row items-center justify-start gap-1 text-sm font-medium'>
+      Developed with <img
+        src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M5.14168%200.0751329C2.73329%20-0.349057%200.467946%201.06583%200.0847084%203.23685C-0.722619%207.81031%204.45713%2013.2264%206.43621%2013.5749C8.41543%2013.9235%2015.1373%2010.6037%2015.9446%206.03025C16.3278%203.8592%2014.6836%201.75572%2012.2751%201.33153C9.97996%200.927283%208.32975%202.8486%208.32975%202.8486C8.32975%202.8486%207.43683%200.479366%205.14168%200.0751329Z'%20fill='black'/%3e%3c/svg%3e"
+        alt='thx'
+        aria-label='thx'
+        class='sc-czgmHJ iaOGKt'
+      /> by <Typography.Link href='https://intothewildweb.ru/' target='_blank' rel='noopener'
+        >Sergey Cherkashin</Typography.Link
+      >
+    </Typography.P>
+  </div>
+
+  <p>⚠️ NO OFFICIAL ⚠️</p>
+
+  <div class='flex gap-2'>
+    Ссылочки:
+    <ul class='flex space-x-4 items-center'>
+      <li>
+        <a href='https://www.youtube.com/@AsafevStas' target='_blank'>
+          <img src={LogoYT.src} title='youtube' alt='yt' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://www.youtube.com/@AsafevLife' target='_blank'>
+          <img src={LogoYT.src} title='youtube-live' alt='yt-live' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://www.instagram.com/asafevstas/' target='_blank'>
+          <img src={LogoInst.src} title='instagram' alt='instagram' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://vk.com/asafevstas' target='_blank'>
+          <img src={LogoVK.src} title='vk' alt='vk' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://t.me/asafevstas' target='_blank'>
+          <img src={LogoTG.src} title='telegram' alt='telegram' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://autopragmat.ru' target='_blank'>
+          <img src={LogoPragmat.src} title='autopragmat' alt='autopragmat' width={24} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://ratata.ru' target='_blank'>
+          <img src={LogoRatata.src} title='ratata' alt='ratata' width={64} height={24} />
+        </a>
+      </li>
+      <li>
+        <a href='https://zimwerk.ru/msk#rec370714062' target='_blank'>
+          <img src={LogoZim.src} title='zimwerk' alt='zimwerk' width={64} />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

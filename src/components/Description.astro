@@ -1,0 +1,37 @@
+---
+interface Props {
+  description: string[]
+}
+
+const { description } = Astro.props
+---
+
+<div class='border-solid bg-slate-200 p-8 text-left mt-4 rounded-2xl max-h-[320px] overflow-auto'>
+  {
+    description.map((line, index) => {
+      const withLink = (el: string) => {
+        const parsedData = el.split(/(https?:\/\/|mailto:)/)
+
+        if (parsedData.length === 1) {
+          return <p>{el}</p>
+        }
+
+        return (
+          <p>
+            {parsedData[0]}{' '}
+            <a href={`${parsedData[1]}${parsedData[2]}`} target='_blank'>
+              {parsedData[2]}
+            </a>
+          </p>
+        )
+      }
+
+      return (
+        <>
+          {index > 0 && <p>_</p>}
+          {line.split('\n').length ? <div>{line.split('\n').map(withLink)}</div> : withLink(line)}
+        </>
+      )
+    })
+  }
+</div>

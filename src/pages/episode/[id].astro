@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import VideoPlayer from '@/components/VideoPlayer.astro';
+import Description from '@/components/Description.astro';
+
+import { episodes } from '@/data/episodes';
+
+export function getStaticPaths() {
+  return [
+    { params: { id: '1' } },
+    { params: { id: '2' } },
+    { params: { id: '3' } },
+    { params: { id: '4' } }
+  ];
+}
+
+const { id } = Astro.params;
+const episodeData = episodes[Number(id)];
+
+if (!episodeData) {
+  return Astro.redirect('/404');
+}
+---
+
+<Layout title={episodeData.title} episodeData={episodeData}>
+  <div class="my-6">
+    <VideoPlayer video={episodeData.video} />
+    <Description description={episodeData.description} />
+  </div>
+</Layout>

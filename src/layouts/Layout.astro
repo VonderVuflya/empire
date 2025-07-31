@@ -1,0 +1,99 @@
+---
+import { ClientRouter } from 'astro:transitions'
+
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+
+import { type EpisodeDataType } from '@/data/episodes'
+
+import '../styles/global.css'
+
+export interface Props {
+  title?: string
+  description?: string
+  image?: string
+  noindex?: boolean
+  episodeData?: EpisodeDataType
+}
+
+const {
+  title,
+  episodeData,
+  description = 'НЕ официальный сайт Империя Без Автомобилей',
+  // image = '/og-image.jpg',
+  noindex = false,
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const defaultName = 'Империя Без Автомобилей'
+const fullTitle = title === defaultName ? title : `${title} | ${defaultName}`
+---
+
+<!doctype html>
+<html lang='ru'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel='manifest' href='/manifest.json' />
+    <meta name='generator' content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel='canonical' href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name='title' content={fullTitle} />
+    <meta name='description' content={description} />
+    <ClientRouter />
+
+    {noindex && <meta name='robots' content='noindex, nofollow' />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={canonicalURL} />
+    <meta property='og:title' content={fullTitle} />
+    <meta property='og:description' content={description} />
+    <!-- <meta property='og:image' content={new URL(image, Astro.site)} /> -->
+    <meta property='og:site_name' content={defaultName} />
+    <meta property='og:locale' content='ru_RU' />
+
+    <!-- Twitter -->
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta property='twitter:url' content={canonicalURL} />
+    <meta property='twitter:title' content={fullTitle} />
+    <meta property='twitter:description' content={description} />
+    <!-- <meta property='twitter:image' content={new URL(image, Astro.site)} /> -->
+    <meta property='twitter:domain' content='aeromar.ru' />
+
+    <!-- Additional Meta Tags -->
+    <meta name='author' content={defaultName} />
+    <meta name='keywords' content={`${defaultName}, империя без автомобилей, Асафьев Стас`} />
+  </head>
+  <body class='min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50'>
+    <div class='container'>
+      <div class='h-[100%] flex flex-col justify-between'>
+        <Header title={episodeData?.title} />
+
+        <slot />
+
+        <Footer />
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  a,
+  a:link,
+  a:visited {
+    text-decoration: none;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    text-align: center;
+  }
+</style>

@@ -35,7 +35,7 @@ export function NavigationMenu() {
         <UI.NavigationMenuItem>
           <UI.NavigationMenuTrigger>Эпизоды</UI.NavigationMenuTrigger>
           <UI.NavigationMenuContent>
-            <ul className='flex flex-col gap-2 p-4 w-[500px] '>
+            <ul className='flex flex-col gap-2 p-4 w-[500px] not-lg:w-[300px] '>
               {components.map(component => (
                 <ListItem
                   key={component.title}

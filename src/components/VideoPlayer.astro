@@ -1,0 +1,39 @@
+---
+import type { VideoType } from '@/data/episodes';
+
+export interface Props {
+  video: VideoType
+}
+
+const { video } = Astro.props;
+---
+
+<div class="relative overflow-hidden pt-[56.25%] rounded-2xl bg-black">
+  <iframe
+    id="video-iframe"
+    class="absolute top-0 left-0 w-[100%] h-[100%] border-0"
+    title={video.title}
+    src={video.vk}
+    allow="accelerometer; encrypted-media; gyroscope; fullscreen; picture-in-picture; screen-wake-lock;"
+    referrerpolicy="strict-origin-when-cross-origin"
+    frameborder="0"
+    allowfullscreen
+  />
+</div>
+
+<script define:vars={{ video }}>
+  const checkbox = document.getElementById('vpn-switch');
+  const iframe = document.getElementById('video-iframe');
+
+  checkbox?.addEventListener('change', (e) => {
+    const useYoutube = e.target.checked;
+    iframe.src = useYoutube ? video.vk : video.youtube;
+  });
+
+  window.addEventListener('vpn-toggle', (event) => {
+    const iframe = document.getElementById('video-iframe');
+    const useYoutube = event.detail;
+    console.log('vpn-toggle', { event, video })
+    iframe.src = useYoutube ? video.vk : video.youtube;
+  });
+</script>

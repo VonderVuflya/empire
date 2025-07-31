@@ -1,0 +1,29 @@
+---
+import { NavigationMenu } from "./NavigationMenu";
+import { Label } from "./ui/label";
+// import { Switch } from "./ui/switch";
+import Typography from "./ui/typography";
+import VPNSwitch from "./VPNSwitch";
+
+export interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
+---
+
+<div>
+  <Typography.Link href="/">
+    <h1>Империя без автомобилей</h1>
+  </Typography.Link>
+
+  <div class='flex items-center justify-between mt-4'>
+    <div class="flex-1">
+      <NavigationMenu client:load />
+    </div>
+
+    {title && <h3 class="flex-[3]">{title}</h3>}
+
+    <VPNSwitch client:load />
+  </div>
+</div>
